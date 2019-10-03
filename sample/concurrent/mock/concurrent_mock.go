@@ -5,8 +5,9 @@
 package mock_concurrent
 
 import (
-	gomock "github.com/golang/mock/gomock"
 	reflect "reflect"
+
+	gomock "github.com/golang/mock/gomock"
 )
 
 // MockMath is a mock of Math interface
@@ -21,7 +22,7 @@ type MockMathMockRecorder struct {
 }
 
 // NewMockMath creates a new mock instance
-func NewMockMath(ctrl *gomock.Controller) *MockMath {
+func NewMockMath(ctrl *gomock.Controller) *MockMath {  // 新建 mockxxx
 	mock := &MockMath{ctrl: ctrl}
 	mock.recorder = &MockMathMockRecorder{mock}
 	return mock
@@ -33,15 +34,15 @@ func (m *MockMath) EXPECT() *MockMathMockRecorder {
 }
 
 // Sum mocks base method
-func (m *MockMath) Sum(arg0, arg1 int) int {
+func (m *MockMath) Sum(arg0, arg1 int) int { //math 的 mock 必须实现的方法 Sum
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Sum", arg0, arg1)
+	ret := m.ctrl.Call(m, "Sum", arg0, arg1) //Sum 的 mock,此处查表并调用 Call,action
 	ret0, _ := ret[0].(int)
 	return ret0
-}
+C
 
 // Sum indicates an expected call of Sum
-func (mr *MockMathMockRecorder) Sum(arg0, arg1 interface{}) *gomock.Call {
+func (mr *MockMathMockRecorder) Sum(arg0, arg1 interface{}) *gomock.Call { //新建 Call
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Sum", reflect.TypeOf((*MockMath)(nil).Sum), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Sum", reflect.TypeOf((*MockMath)(nil).Sum), arg0, arg1)	//新建 Call 传入了 mock
 }

@@ -3,6 +3,6 @@
 // Package concurrent demonstrates how to use gomock with goroutines.
 package concurrent
 
-type Math interface {
+type Math interface {	//要mock的接口
 	Sum(a, b int) int
 }

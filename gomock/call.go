@@ -188,7 +188,7 @@ func (c *Call) Return(rets ...interface{}) *Call {
 		}
 	}
 
-	c.addAction(func([]interface{}) []interface{} {
+	c.addAction(func([]interface{}) []interface{} { //action 在这里被添加, 包含返回值
 		return rets
 	})
 

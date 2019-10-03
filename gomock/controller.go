@@ -218,7 +218,7 @@ func (ctrl *Controller) Call(receiver interface{}, method string, args ...interf
 
 	var rets []interface{}
 	for _, action := range actions {
-		if r := action(args); r != nil {
+		if r := action(args); r != nil { // action 在这里被执行
 			rets = r
 		}
 	}
