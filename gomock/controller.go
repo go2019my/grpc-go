@@ -163,7 +163,7 @@ func (ctrl *Controller) RecordCall(receiver interface{}, method string, args ...
 	ctrl.T.Helper()
 
 	recv := reflect.ValueOf(receiver)
-	for i := 0; i < recv.Type().NumMethod(); i++ {
+	for i := 0; i < recv.Type().NumMethod(); i++ { //查找 要 mock 的方法
 		if recv.Type().Method(i).Name == method {
 			return ctrl.RecordCallWithMethodType(receiver, method, recv.Method(i).Type(), args...)
 		}
