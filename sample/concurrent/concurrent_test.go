@@ -8,7 +8,7 @@ import (
 
 	mock "github.com/golang/mock/sample/concurrent/mock"
 )
-
+// Math 是个接口,要测试的对象. MockMath 是它的一个 mock,等价于一个实现.
 func call(ctx context.Context, m Math) (int, error) {
 	result := make(chan int)
 	go func() {
